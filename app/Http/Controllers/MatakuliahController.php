@@ -19,7 +19,7 @@ class MatakuliahController extends Controller
      */
     public function create()
     {
-        return 'membuat matakuliah';
+        return 'membuat ghjfgjgj matakuliah';
     }
 
     /**
