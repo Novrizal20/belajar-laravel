@@ -18,7 +18,7 @@ Route::get('/nama/{param1}', function ($param1) {
 });
 
 Route::get('/nim/{param1?}', function ($param1 = '') {
-    return 'Nim Saya: ' .$param1;
+    return 'Nim xfghdfgh: ' .$param1;
 });
 
 Route::get('/mahasiswa/{param1}', [MahasiswaController ::class,'show']) ;
