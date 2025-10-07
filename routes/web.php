@@ -39,3 +39,7 @@ use App\Http\Controllers\AuthController;
 Route::get('/auth',[AuthController::class,'index']);
 
 Route::post('/auth/login', [AuthController::class, 'login']);
+
+use App\Http\Controllers\PegawaiController;
+Route::get('/pegawai', [PegawaiController::class, 'form']);
+Route::post('/pegawai', [PegawaiController::class, 'index']);
