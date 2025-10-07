@@ -12,7 +12,7 @@ Route::get('/pcr', function () {
 use App\Http\Controllers\MatakuliahController;
 
 Route::get('/mahasiswa', function () {
-    return 'Hallo Mahasiswa';
+    return 'Hai Mahasiswa';
 });
 
 Route::get('/nama/{param1}', function ($param1) {
