@@ -34,3 +34,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 
 Route::post('question/store', [QuestionController::class, 'store'])
 		->name('question.store');
+
+use App\Http\Controllers\AuthController;
+Route::get('/auth',[AuthController::class,'index']);
+
+Route::post('/auth/login', [AuthController::class, 'login']);
