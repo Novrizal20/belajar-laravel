@@ -12,7 +12,7 @@ Route::get('/pcr', function () {
 use App\Http\Controllers\MatakuliahController;
 
 Route::get('/mahasiswa', function () {
-    return 'Hallo Mahasiswa';
+    return 'Hai Mahasiswa';
 });
 
 Route::get('/nama/{param1}', function ($param1) {
@@ -34,3 +34,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
         ->name('home');
 Route::post('question/store', [QuestionController::class, 'store'])
 		->name('question.store');
+
+use App\Http\Controllers\AuthController;
+Route::get('/auth',[AuthController::class,'index']);
+
+Route::post('/auth/login', [AuthController::class, 'login']);
+
+use App\Http\Controllers\PegawaiController;
+Route::get('/pegawai', [PegawaiController::class, 'form']);
+Route::post('/pegawai', [PegawaiController::class, 'index']);
