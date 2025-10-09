@@ -36,7 +36,7 @@ class QuestionController extends Controller
             'nama.required'=>'Nama tidak boleh kosong',
             'email.email'=>'Email tidak valid'
         ]);
-        // $data['nama'] = $request->nama;
+        $data['nama'] = $request->nama;
         // $data['email'] = $request->email;
         // $data['pertanyaan'] = $request->pertanyaan;
         // return view('home-question-respon', $request);
