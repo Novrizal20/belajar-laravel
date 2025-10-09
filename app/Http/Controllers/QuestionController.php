@@ -27,47 +27,26 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
         //dd($request->all());
-=======
-        // $data['nama'] = $request->nama;
-        // $data['email'] = $request->email;
-        // $data['pertanyaan'] = $request->pertanyaan;
-        // $request->validate([
-		//     'nama'  => 'required|max:10',
-		//     'email' => ['required','email'],
-		//     'pertanyaan' => 'required|max:300|min:8',
-		// ]);
->>>>>>> 7be1f32315091dc860e29b49745917c807e3bd0f
         $request->validate([
-		    'nama'  => 'required|max:10',
-		    'email' => ['required','email'],
-		    'pertanyaan' => 'required|max:300|min:8',
-		],[
+            'nama'  => 'required|max:10',
+            'email' => ['required','email'],
+            'pertanyaan' => 'required|max:300|min:8',
+        ],[
             'nama.required'=>'Nama tidak boleh kosong',
-<<<<<<< HEAD
             'email.email'=>'Email tidak valid'
         ]);
         // $data['nama'] = $request->nama;
         // $data['email'] = $request->email;
         // $data['pertanyaan'] = $request->pertanyaan;
         // return view('home-question-respon', $request);
-        // return redirect()->route('home');
-        // return redirect()->back();
-        // return redirect()->away('https://www.pcr.ac.id');
         // return redirect()->route('home')->with('info', 'Selamat, Kamu Lulus!');
-        // return redirect()->back()->with('info', 'Oops... Saldo Kamu Kurang!');
         // return redirect()->back()->with('info', 'Oops... Saldo Kamu Kurang!');
         $nama = $request->input('nama');
         $pertanyaan = $request->input('pertanyaan');
         $email = $request->input('email');
         $pesan = "Terimakasih {$nama}! Pertanyaan Anda:'{$pertanyaan}' akan segera direspon melalui email {$email}" ;
         return redirect('/home')->with('info', $pesan);
-=======
-            'email.email' => 'Email Tidak Valid'
-        ]);
-        return view('home-question-respon', $request);
->>>>>>> 7be1f32315091dc860e29b49745917c807e3bd0f
     }
 
     /**
