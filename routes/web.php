@@ -30,7 +30,7 @@ Route::get('/about', function () {
 });
 
 Route::get('/matakuliah/show/{param1?}', [MatakuliahController ::class,'show']) ;
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
+        ->name('home');
 Route::post('question/store', [QuestionController::class, 'store'])
 		->name('question.store');
