@@ -164,23 +164,6 @@
 
                 <input type="text" class="form-control" id="nama" name="nama" value="{{old('nama')}}">
             </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="text" class="form-control" id="email" name="email" value="{{old('email')}}">
-            </div>
-            <div class="mb-3">
-                <label for="pertanyaan" class="form-label">Pertanyaan</label>
-                <textarea class="form-control" id="pertanyaan" name="pertanyaan" rows="4">{{old('pertanyaan')}}</textarea>
-                <input type="text" class="form-control" id="nama" name="nama" value="{{old('nama')}}">
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="text" class="form-control" id="email" name="email" value="{{old('email')}}">
-            </div>
-            <div class="mb-3">
-                <label for="pertanyaan" class="form-label">Pertanyaan</label>
-                <textarea class="form-control" id="pertanyaan" name="pertanyaan" rows="4">{{old('pertanyaan')}}</textarea>
-            </div>
             <button type="submit" class="btn btn-primary">Kirim Pertanyaan</button>
         </form>
     </div>
