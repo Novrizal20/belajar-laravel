@@ -43,3 +43,7 @@ Route::post('/auth/login', [AuthController::class, 'login']);
 use App\Http\Controllers\PegawaiController;
 Route::get('/pegawai', [PegawaiController::class, 'form']);
 Route::post('/pegawai', [PegawaiController::class, 'index']);
+
+use App\Http\Controllers\DashboardController;
+Route::get('dashboard', [DashboardController::class, 'index'])
+        ->name('dashboard');
