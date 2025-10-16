@@ -47,3 +47,6 @@ Route::post('/pegawai', [PegawaiController::class, 'index']);
 use App\Http\Controllers\DashboardController;
 Route::get('dashboard', [DashboardController::class, 'index'])
         ->name('dashboard');
+
+use App\Http\Controllers\PelangganController;
+Route::resource('pelanggan', PelangganController::class);
