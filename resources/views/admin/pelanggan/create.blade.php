@@ -1,4 +1,3 @@
-
 @extends('admin.template')
 @section('title','Tambah Pelanggan')
 @section('content')
