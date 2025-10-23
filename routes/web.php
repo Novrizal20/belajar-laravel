@@ -50,3 +50,7 @@ Route::get('dashboard', [DashboardController::class, 'index'])
 
 use App\Http\Controllers\PelangganController;
 Route::resource('pelanggan', PelangganController::class);
+
+use App\Http\Controllers\UserController;
+Route::resource('user', UserController::class);
+
