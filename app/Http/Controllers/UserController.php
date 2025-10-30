@@ -67,6 +67,7 @@ class UserController extends Controller
         return view('admin.user.edit', $data);
     }
 
+    
     /**
      * Update the specified resource in storage.
      */
