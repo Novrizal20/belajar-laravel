@@ -39,6 +39,7 @@ class QuestionController extends Controller
         $data['nama'] = $request->nama;
         // $data['email'] = $request->email;
         // $data['pertanyaan'] = $request->pertanyaan;
+
         // return view('home-question-respon', $request);
         // return redirect()->route('home')->with('info', 'Selamat, Kamu Lulus!');
         // return redirect()->back()->with('info', 'Oops... Saldo Kamu Kurang!');
@@ -47,6 +48,23 @@ class QuestionController extends Controller
         $email = $request->input('email');
         $pesan = "Terimakasih {$nama}! Pertanyaan Anda:'{$pertanyaan}' akan segera direspon melalui email {$email}" ;
         return redirect('/home')->with('info', $pesan);
+
+        // $request->validate([
+		//     'nama'  => 'required|max:10',
+		//     'email' => ['required','email'],
+		//     'pertanyaan' => 'required|max:300|min:8',
+		// ]);
+        $request->validate([
+		    'nama'  => 'required|max:10',
+		    'email' => ['required','email'],
+		    'pertanyaan' => 'required|max:300|min:8',
+		],[
+            'nama.required'=>'Nama tidak boleh kosong',
+            'email.email' => 'Email Tidak Valid'
+        ]);
+        // return view('home-question-respon', $request);
+        return redirect()->route('home')
+        ->with('info','Selamat, Pertanyaan Anda Akan Kami Proses!');
     }
 
     /**
