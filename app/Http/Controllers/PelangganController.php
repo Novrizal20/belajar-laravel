@@ -88,6 +88,9 @@ class PelangganController extends Controller
         return redirect()->route('pelanggan.index')->with('success', 'Perubahan Data Berhasil!');
     }
 
+
+    
+
     /**
      * Remove the specified resource from storage.
      */
