@@ -30,10 +30,15 @@
             <div class="col-12 mb-4">
                 <div class="card border-0 shadow components-section">
                     <div class="card-body">
-                        <form action={{ route('user.store') }} method="POST">
+                        <form action={{ route('user.store') }} method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-4">
-                                <div class="col-lg-4 col-sm-6">
+                                <!-- Profile Picture -->
+                                <div>
+                                    <label for="profile_picture">Profile Picture:</label>
+                                    <input type="file" name="profile_picture" id="profile_picture">
+                                    <br><br>
+                                </div>
                                     <!-- Name -->
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Nama</label>
@@ -65,10 +70,9 @@
                                         <a href="{{ route('user.index') }}" class="btn btn-outline-secondary ms-2">Batal</a>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>

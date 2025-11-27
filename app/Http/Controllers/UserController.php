@@ -1,10 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\user;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+
 class UserController extends Controller
 {
     /**
@@ -13,7 +13,7 @@ class UserController extends Controller
     public function index()
     {
         $data['dataUser'] = user::all();
-		return view('admin.user.index',$data);
+        return view('admin.user.index', $data);
     }
 
     /**
@@ -32,22 +32,29 @@ class UserController extends Controller
     {
         // dd($request->all());
         // $data['name'] = $request->name;
-		// $data['email'] = $request->email;
-		// $data['password'] = $request->password;
+        // $data['email'] = $request->email;
+        // $data['password'] = $request->password;
         // $data['password'] = Hash::make($request->password);
-		// user::create($data);
+        // user::create($data);
 
         $request->validate([
-        'name' => 'required|string|max:100',
-        'email' => 'required|email|unique:users,email',
-        'password' => 'required|string|min:8|confirmed',
-    ]);
+            'name'            => 'required|string|max:100',
+            'email'           => 'required|email|unique:users,email',
+            'profile_picture' => 'nullable|image|mimes:jpg,jpeg,png',
+            'password'        => 'required|string|min:8|confirmed',
+        ]);
 
-    $data['name'] = $request->name;
-    $data['email'] = $request->email;
-    $data['password'] = Hash::make($request->password);
+        $data['name']     = $request->name;
+        $data['email']    = $request->email;
+        if ($request->hasFile('profile_picture')) {
+            $file                    = $request->file('profile_picture');
+            $Path                    = $file->store('profile_pictures', 'public');
+            $data['profile_picture'] = $Path;
+        }
+        $data['password'] = Hash::make($request->password);
 
-		return redirect()->route('user.index')->with('success','Penambahan Data Berhasil!');
+        user::create($data);
+        return redirect()->route('user.index')->with('success', 'Penambahan Data Berhasil!');
     }
 
     /**
@@ -73,25 +80,35 @@ class UserController extends Controller
     public function update(Request $request, string $id)
     {
         $user_id = $id;
-        $user = user::findOrFail($user_id);
+        $user    = user::findOrFail($user_id);
 
         // $user->name = $request->name;
         // $user->email = $request->email;
         // $user->password = $request->password;
         // $data['password'] = Hash::make($request->password);
         $request->validate([
-        'name' => 'required|string|max:100',
-        'email' => 'required|email|unique:users,email,'.$user->id.',id',
-        'password' => 'nullable|string|min:8|confirmed'
-]);
-        $user->name = $request->name;
+            'name'            => 'required|string|max:100',
+            'email'           => 'required|email|unique:users,email,' . $user->id . ',id',
+            'profile_picture' => 'nullable|image|mimes:jpg,jpeg,png',
+            'password'        => 'nullable|string|min:8|confirmed',
+        ]);
+        $user->name  = $request->name;
         $user->email = $request->email;
 
+        if ($user->profile_picture) {
+            Storage::disk('public')->delete($user->profile_picture);
+        }
+        $path = $request->file('profile_picture')->store('profile_pictures', 'public');
+        $user->profile_picture = $path;
+        $user->save();
+        
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password);
         }
-            $user->save();
-            return redirect()->route('user.index')->with('success', 'Perubahan Data Berhasil!');
+        $user->save();
+
+
+        return redirect()->route('user.index')->with('success', 'Perubahan Data Berhasil!');
     }
 
     /**
@@ -101,6 +118,6 @@ class UserController extends Controller
     {
         $user = user::findOrfail($id);
         $user->delete();
-        return redirect()->route('user.index')->with('Success','Data berhasil dihapus');
+        return redirect()->route('user.index')->with('Success', 'Data berhasil dihapus');
     }
 }
