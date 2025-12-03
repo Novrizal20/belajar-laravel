@@ -15,6 +15,6 @@
     @endif
 
     <br><br>
-    <a href="{{ route('profile.edit') }}">Edit Profile</a>
+    <a href="{{ route('profile.edit',$user->id) }}">Edit Profile</a>
 </body>
 </html>

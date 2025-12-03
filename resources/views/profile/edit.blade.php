@@ -14,7 +14,7 @@
         <div style="color: green;">{{ session('success') }}</div>
     @endif
 
-    <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('profile.update',$user->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -26,11 +26,11 @@
     </form>
 
     <br>
-    <a href="{{ route('profile.show') }}">Back to Profile</a>
+    <a href="{{ route('profile.show',$user->id) }}">Back to Profile</a>
     @if ($user->profile_picture)
         <img src="{{ Storage::url($user->profile_picture) }}" alt="Profile Picture" width="200">
         <br><br>
-        <form action="{{ route('profile.destroy') }}" method="POST">
+        <form action="{{ route('profile.destroy',$user->id) }}" method="POST">
             @csrf
             @method('DELETE')
             <button type="submit">Delete Profile Picture</button>
