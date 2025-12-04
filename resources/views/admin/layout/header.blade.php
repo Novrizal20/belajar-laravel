@@ -29,16 +29,16 @@
                          data-bs-toggle="dropdown" aria-expanded="false">
                          <div class="media d-flex align-items-center">
                              <img class="avatar rounded-circle" alt="Image placeholder" style="object-fit: cover;"
-     src="{{ $user && $user->avatar
-            ? asset('storage/' . $user->avatar)
-            : asset('assets-admin/img/team/profile-picture-3.jpg') }}">
+                                 src="{{Auth::user()->avatar
+                                     ? asset('storage/' . Auth::user()->avatar)
+                                     : asset('assets-admin/img/team/profile-picture-3.jpg') }}">
 
-<div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-    <span class="mb-0 font-small fw-bold text-gray-900">
-        {{ $user->name ?? 'Guest' }}
-    </span>
-                         </div>
-                     </a>
+                             <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
+                                 <span class="mb-0 font-small fw-bold text-gray-900">
+                                     {{ Auth::user()->name ?? 'Guest' }}
+                                 </span>
+                             </div>
+                     </a>  
                      <div class="dropdown-menu dashboard-dropdown dropdown-menu-end mt-2 py-1">
                          <a class="dropdown-item d-flex align-items-center" href="#">
                              <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20"
